@@ -9,7 +9,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-
+import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class Adactin extends BasePage {
@@ -210,8 +210,35 @@ public class Adactin extends BasePage {
 
 	}
 	
-	
-	
+	@Test(priority = 1)
+	private void project() throws InterruptedException {
+		
+		urlLaunch("http://adactinhotelapp.com/");
+		implicitlyWait(60);
+		pageLoadTimeout(60);
+		LpAdactin l = new LpAdactin();
+		SoftAssert s = new SoftAssert();
+		
+		sendkeys(l.getTxtId(),"Akash1516" );
+		String attribute = getAttribute(l.getTxtId(), "value");
+		s.assertEquals(attribute,"Akash1516" ,"VERIFYUSERNAME");
+		
+		sendkeys(l.getTxtPassword(), "NinjaStorm" ); 
+		String attribute2 = getAttribute(l.getTxtPassword(), "value");
+		s.assertEquals(attribute2,"NinjaStorm" , "VERIFYPASSWORD");
+		
+		
+		
+		click(l.getBtnlogin());
+		wait(4000);
+		String getcurrenturl = getcurrenturl();
+		boolean contains = getcurrenturl.contains("SearchHotel.php");
+		s.assertTrue(contains);
+		s.assertAll();
+		System.out.println(Thread.currentThread().getId());
+		
+
+	}
 	
 	
 	
