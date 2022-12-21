@@ -240,6 +240,12 @@ public class Adactin extends BasePage {
 
 	}
 	
+	private void Sample() {
+		
+		System.out.println("Done");
+
+	}
+	
 	
 	
 	
